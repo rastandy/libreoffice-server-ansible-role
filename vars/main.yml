@@ -1,8 +1,2 @@
 ---
 # vars file for rastandy.libreoffice-server
-
-libreoffice_basename: "LibreOffice_{{ libreoffice_version }}_Linux_x86-64_{{ libreoffice_package_manager }}"
-libreoffice_download_filename: "{{ libreoffice_basename }}.tar.gz"
-libreoffice_package_filename: "{{ libreoffice_basename }}.rpm"
-libreoffice_donwload_url: "{{ libreoffice_base_url }}/{{ libreoffice_version }}/{{ libreoffice_package_manager }}/x86_64/{{ libreoffice_download_filename }}"
-libreoffice_install_dir: "{{ libreoffice_download_dir }}/libreoffice{{ libreoffice_version | regex_replace('\\.[0-9]+$', '') }}"
