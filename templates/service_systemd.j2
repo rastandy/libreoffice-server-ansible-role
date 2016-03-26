@@ -1,0 +1,12 @@
+[Unit]
+Description=LibreOffice server
+
+[Service]
+User={{ libreoffice_user }}
+Restart=on-failure
+
+ExecStart=/bin/libreoffice --headless --accept="socket,host={{ libreoffice_listen_address }},port={{ libreoffice_listen_port }};urp;"
+ExecStop=pkill libreoffice
+
+[Install]
+WantedBy=multi-user.target

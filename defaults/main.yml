@@ -1,9 +1,7 @@
 ---
 # defaults file for rastandy.libreoffice-server
 
-libreoffice_version: 5.1.1
-libreoffice_base_url: "http://download.documentfoundation.org/libreoffice/stable"
-libreoffice_package_manager: "rpm"
-libreoffice_sha256sum: 9d9b7913e656d7f3f89b88d3c4a8559c4ee7f0cef1f45ed79b46fb0b651c0ffc
-
-libreoffice_download_dir: "/opt"
+libreoffice_user: libreoffice
+libreoffice_group: libreoffice
+libreoffice_listen_port: 8100
+libreoffice_listen_address: 127.0.0.1

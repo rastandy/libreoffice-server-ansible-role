@@ -1,25 +1,20 @@
 ---
 # tasks file for rastandy.libreoffice-server
 
-- name: Download LibreOffice
-  get_url:
-    url: "{{ libreoffice_donwload_url }}"
-    dest: "{{ libreoffice_download_dir }}/{{ libreoffice_download_filename }}"
-    checksum: "sha256:{{ libreoffice_sha256sum }}"
+- name: Install LibreOffice headless
+  yum: name=libreoffice-headless state=present
 
-- name: Unarchive LibreOffice
-  unarchive: 
-    src: "{{ libreoffice_download_dir }}/{{ libreoffice_download_filename }}" 
-    dest: "{{ libreoffice_download_dir }}"
-    list_files: yes
-    copy: no
-  register: libreoffice_extracted
+- name: Create LibreOffice user
+  group: name="{{ libreoffice_group }}"
 
-- name: Show extracted files
-  debug: var=libreoffice_extracted
-  when: debug
+- name: Create LibreOffice user
+  user: name="{{ libreoffice_user }}" group="{{ libreoffice_group }}"
 
-- name: Install extracted rpm packages
-  shell: /bin/yum -y localinstall {{ libreoffice_download_dir }}/{{ libreoffice_extracted.files[0] }}RPMS/*
-  args:
-    creates: "{{ libreoffice_install_dir }}"
+- name: Create libreoffice service
+  template: src="service_systemd.j2" dest=/etc/systemd/system/libreoffice-server.service owner=root group=root mode=0644
+  when:
+    - ansible_local.util.init.system is defined
+    - ansible_local.util.init.system == 'systemd'
+
+- name: Enable LibreOffice service
+  service: name=libreoffice-server state=started enabled=yes

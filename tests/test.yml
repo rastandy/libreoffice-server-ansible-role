@@ -5,11 +5,6 @@
 
   vars:
     debug: true
-    java_version: "8u66"
 
   roles:
-    - role: silpion.java
-      oracle_java_distribution: "srv"
-      oracle_java_version: "{{ java_version }}"
-
     - rastandy.libreoffice-server
