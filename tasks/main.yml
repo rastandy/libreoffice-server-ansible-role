@@ -1,0 +1,14 @@
+---
+# tasks file for rastandy.libreoffice-server
+
+- name: Download LibreOffice
+  get_url:
+    url: "{{ libreoffice_donwload_url }}"
+    dest: "{{ libreoffice_download_dir }}/{{ libreoffice_download_filename }}"
+    sha256sum: "{{ libreoffice_sha256sum }}"
+
+- name: Unarchive LibreOffice
+  unarchive: 
+    src: "{{ libreoffice_download_dir }}/{{ libreoffice_download_filename }}" 
+    dest: "{{ libreoffice_download_dir }}" 
+    copy: no
