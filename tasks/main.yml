@@ -4,7 +4,7 @@
 - name: Install LibreOffice headless
   yum: name=libreoffice-headless state=present
 
-- name: Create LibreOffice user
+- name: Create LibreOffice group
   group: name="{{ libreoffice_group }}"
 
 - name: Create LibreOffice user
