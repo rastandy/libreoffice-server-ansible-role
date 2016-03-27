@@ -15,9 +15,6 @@
 
 - name: Create libreoffice service
   template: src="service_systemd.j2" dest=/etc/systemd/system/libreoffice-server.service owner=root group=root mode=0644
-  when:
-    - ansible_local.util.init.system is defined
-    - ansible_local.util.init.system == 'systemd'
   notify: restart libreoffice-server
 
 - name: Enable LibreOffice service
