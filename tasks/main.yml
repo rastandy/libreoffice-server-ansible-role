@@ -2,7 +2,10 @@
 # tasks file for rastandy.libreoffice-server
 
 - name: Install LibreOffice headless
-  yum: name=libreoffice-headless state=present
+  yum: name="{{ item }}" state=present
+  with_items:
+    - libreoffice-headless
+    - libreoffice
 
 - name: Create LibreOffice group
   group: name="{{ libreoffice_group }}"
