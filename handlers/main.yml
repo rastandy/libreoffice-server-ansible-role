@@ -1,2 +1,7 @@
 ---
 # handlers file for rastandy.libreoffice-server
+
+- name: restart libreoffice-server
+  service:
+    name: libreoffice-server
+    state: restarted

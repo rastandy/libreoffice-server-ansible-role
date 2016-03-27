@@ -15,6 +15,7 @@
   when:
     - ansible_local.util.init.system is defined
     - ansible_local.util.init.system == 'systemd'
+  notify: restart libreoffice-server
 
 - name: Enable LibreOffice service
   service: name=libreoffice-server state=started enabled=yes
