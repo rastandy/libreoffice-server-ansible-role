@@ -6,6 +6,11 @@
   with_items:
     - libreoffice-headless
     - libreoffice
+  when: ansible_os_family == "RedHat"
+
+- name: Install LibreOffice
+  apt: name="libreoffice" state=present
+  when: ansible_os_family == "Ubuntu" or ansible_os_family == "Debian"
 
 - name: Create LibreOffice group
   group: name="{{ libreoffice_group }}"
