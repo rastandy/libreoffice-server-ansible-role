@@ -5,7 +5,7 @@ Description=LibreOffice server
 User={{ libreoffice_user }}
 Restart=on-failure
 
-ExecStart=/bin/libreoffice "--accept=socket,host={{ libreoffice_listen_address }},port={{ libreoffice_listen_port }},tcpNoDelay=1;urp;" --headless --nodefault --nofirststartwizard --nolockcheck --nologo --norestore
+ExecStart=/usr/bin/libreoffice "--accept=socket,host={{ libreoffice_listen_address }},port={{ libreoffice_listen_port }},tcpNoDelay=1;urp;" --headless --nodefault --nofirststartwizard --nolockcheck --nologo --norestore
 ExecStop=pkill libreoffice
 
 [Install]
