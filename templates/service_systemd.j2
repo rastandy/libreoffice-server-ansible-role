@@ -6,7 +6,7 @@ User={{ libreoffice_user }}
 Restart=on-failure
 
 ExecStart=/usr/bin/libreoffice "--accept=socket,host={{ libreoffice_listen_address }},port={{ libreoffice_listen_port }},tcpNoDelay=1;urp;" --headless --nodefault --nofirststartwizard --nolockcheck --nologo --norestore
-ExecStop=pkill libreoffice
+ExecStop=/usr/bin/pkill libreoffice
 
 [Install]
 WantedBy=multi-user.target
